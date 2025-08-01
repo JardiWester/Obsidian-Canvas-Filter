@@ -17,28 +17,43 @@ function nodeBondingBoxContains(outerNode: CanvasNodeData, innerNode: CanvasNode
 		&& (outerNode.y + outerNode.height) >= (innerNode.y + innerNode.height);
 }
 
-function showOnlyNodes(canvas: any, idsToShow?: Set<string>) {
+function showOnlyNodes(canvas: any, idsToShow?: Set<string>, mode: "hide" | "fade" = "hide") {
 	const nodes = canvas.nodes.values();
 
 	for (const node of nodes) {
 		if (idsToShow === undefined || idsToShow.has(node.id)) {
-			node.nodeEl.show();
+			node.nodeEl.style.display = "";
+			node.nodeEl.style.opacity = "1";
 		} else {
-			node.nodeEl.hide();
+			if (mode === "hide") {
+				node.nodeEl.style.display = "none";
+			} else if (mode === "fade") {
+				node.nodeEl.style.display = "";
+				node.nodeEl.style.opacity = "0.3";
+			}
 		}
 	}
 }
 
-function showOnlyEdges(canvas: any, idsToShow?: Set<string>) {
+function showOnlyEdges(canvas: any, idsToShow?: Set<string>, mode: "hide" | "fade" = "hide") {
 	const edges = canvas.edges.values();
 
 	for (const edge of edges) {
 		if (idsToShow === undefined || idsToShow.has(edge.id)) {
 			edge.lineGroupEl.style.display = "";
 			edge.lineEndGroupEl.style.display = "";
+			edge.lineGroupEl.style.opacity = "1";
+			edge.lineEndGroupEl.style.opacity = "1";
 		} else {
-			edge.lineGroupEl.style.display = "none";
-			edge.lineEndGroupEl.style.display = "none";
+			if (mode === "hide") {
+				edge.lineGroupEl.style.display = "none";
+				edge.lineEndGroupEl.style.display = "none";
+			} else if (mode === "fade") {
+				edge.lineGroupEl.style.display = "";
+				edge.lineEndGroupEl.style.display = "";
+				edge.lineGroupEl.style.opacity = "0.3";
+				edge.lineEndGroupEl.style.opacity = "0.3";
+			}
 		}
 	}
 }
@@ -55,6 +70,13 @@ function getEdgesWhereBothNodesInSet(allEdges: CanvasEdgeData[], nodeIds: Set<st
 }
 
 export default class CanvasFilterPlugin extends Plugin {
+
+	private displayMode: "hide" | "fade" = "hide";
+
+	private toggleDisplayMode() {
+		this.displayMode = this.displayMode === "hide" ? "fade" : "hide";
+		new Notice(`Display mode switched to: ${this.displayMode}`);
+	}
 
 	private ifActiveViewIsCanvas = (commandFn: (canvas: any, canvasData: CanvasData) => void) => (checking: boolean) => {
 		const canvasView = this.app.workspace.getActiveViewOfType(ItemView);
@@ -133,21 +155,27 @@ export default class CanvasFilterPlugin extends Plugin {
 			nodesIdsToShow.add(node.id);
 		}
 
-		showOnlyNodes(canvas, nodesIdsToShow);
+		showOnlyNodes(canvas, nodesIdsToShow, this.displayMode);
 
-		showOnlyEdges(canvas, edgesIdsToShow);
+		showOnlyEdges(canvas, edgesIdsToShow, this.displayMode);
 	}
 
 	async onload() {
+
+		this.addCommand({
+			id: 'toggle-display-mode',
+			name: 'Toggle display mode (hide/fade)',
+			callback: () => this.toggleDisplayMode()
+		});
 
 		this.addCommand({
 			id: 'show-all',
 			name: 'show ALL',
 			checkCallback: this.ifActiveViewIsCanvas((canvas, canvasData) => {
 
-				showOnlyNodes(canvas);
+				showOnlyNodes(canvas, undefined, this.displayMode);
 
-				showOnlyEdges(canvas);
+				showOnlyEdges(canvas, undefined, this.displayMode);
 			})
 		});
 
@@ -177,12 +205,12 @@ export default class CanvasFilterPlugin extends Plugin {
 				const groupNodesToShow = getGroupsFor(nodes, nonGroupNodesToShow);
 
 				const shownNodeIds = new Set([...nonGroupNodesToShow, ...groupNodesToShow].map(x => x.id));
-				showOnlyNodes(canvas, shownNodeIds);
+				showOnlyNodes(canvas, shownNodeIds, this.displayMode);
 
 				const shownEdgeIds = new Set(
 					getEdgesWhereBothNodesInSet(canvasData.edges, shownNodeIds).map(x => x.id))
 
-				showOnlyEdges(canvas, shownEdgeIds);
+				showOnlyEdges(canvas, shownEdgeIds, this.displayMode);
 			})
 		});
 
@@ -200,12 +228,24 @@ export default class CanvasFilterPlugin extends Plugin {
 				for (const selected of selection) {
 					const node = canvas.nodes.get(selected.id);
 					if (node) {
-						node.nodeEl.hide();
+						if(this.displayMode === "hide"){
+							node.nodeEl.hide();
+						}else{
+							node.nodeEl.style.display = "";
+							node.nodeEl.style.opacity = "0.3";
+						}
 					}
 					const edge = canvas.edges.get(selected.id);
 					if (edge) {
-						edge.lineGroupEl.style.display = "none";
-						edge.lineEndGroupEl.style.display = "none";
+						if(this.displayMode === "hide"){
+							edge.lineGroupEl.style.display = "none";
+							edge.lineEndGroupEl.style.display = "none";
+						}else{
+							edge.lineGroupEl.style.display = "";
+							edge.lineEndGroupEl.style.display = "";
+							edge.lineGroupEl.style.opacity = "0.3";
+							edge.lineEndGroupEl.style.opacity = "0.3";
+						}
 					}
 				}
 
@@ -227,19 +267,41 @@ export default class CanvasFilterPlugin extends Plugin {
 				for (const selected of selection) {
 					const node = canvas.nodes.get(selected.id);
 					if (node) {
-						node.nodeEl.hide();
-						const connections = canvasData.edges.filter(x => x.fromNode === node.id || x.toNode === node.id); 
+						if(this.displayMode === "hide") {
+							node.nodeEl.hide();
+						} else {
+							node.nodeEl.style.display = "";
+							node.nodeEl.style.opacity = "0.3";
+						}
+
+						const connections = canvasData.edges.filter(x => x.fromNode === node.id || x.toNode === node.id);
 						for (const connection of connections) {
 							const edge = canvas.edges.get(connection.id);
-							edge.lineGroupEl.style.display = "none";
-							edge.lineEndGroupEl.style.display = "none";
+							if (edge) {
+								if(this.displayMode === "hide") {
+									edge.lineGroupEl.style.display = "none";
+									edge.lineEndGroupEl.style.display = "none";
+								} else {
+									edge.lineGroupEl.style.display = "";
+									edge.lineEndGroupEl.style.display = "";
+									edge.lineGroupEl.style.opacity = "0.3";
+									edge.lineEndGroupEl.style.opacity = "0.3";
+								}
+							}
 						}
 					}
-					
+
 					const edge = canvas.edges.get(selected.id);
 					if (edge) {
-						edge.lineGroupEl.style.display = "none";
-						edge.lineEndGroupEl.style.display = "none";
+						if(this.displayMode === "hide") {
+							edge.lineGroupEl.style.display = "none";
+							edge.lineEndGroupEl.style.display = "none";
+						} else {
+							edge.lineGroupEl.style.display = "";
+							edge.lineEndGroupEl.style.display = "";
+							edge.lineGroupEl.style.opacity = "0.3";
+							edge.lineEndGroupEl.style.opacity = "0.3";
+						}
 					}
 				}
 
@@ -297,7 +359,6 @@ export default class CanvasFilterPlugin extends Plugin {
 							if (node.type === "file") {
 								const metadata = this.app.metadataCache.getCache(node.file);
 								return metadata?.tags?.some(x => x.tag === tag);
-								// TODO search subpaths?
 							}
 
 							if (node.type === "text") {
@@ -317,9 +378,9 @@ export default class CanvasFilterPlugin extends Plugin {
 							nodeIdsToShow.add(group.id);
 						}
 
-						showOnlyNodes(canvas, nodeIdsToShow);
+						showOnlyNodes(canvas, nodeIdsToShow, this.displayMode);
 
-						showOnlyEdges(canvas, new Set(edgesToShow.map(x => x.id)));
+						showOnlyEdges(canvas, new Set(edgesToShow.map(x => x.id)), this.displayMode);
 
 					}).open();
 			})
@@ -345,5 +406,4 @@ class TagSelectionModal extends FuzzySuggestModal<string> {
 	onChooseItem(item: string, evt: MouseEvent | KeyboardEvent): void {
 		this.onSelect(item);
 	}
-
 }
