@@ -7,11 +7,40 @@
       "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:main.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\jardi\\Documents\\Obsidian Vault\\testingVault\\.obsidian\\plugins\\Obsidian-Canvas-Filter\\node_modules\\obsidian\\obsidian.d.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:node_modules\\obsidian\\obsidian.d.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\jardi\\Documents\\Obsidian Vault\\testingVault\\.obsidian\\plugins\\Obsidian-Canvas-Filter\\manifest.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:manifest.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|c:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\Common7\\IDE\\CommonExtensions\\Microsoft\\TSServer\\lib.es5.d.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\jardi\\Documents\\Obsidian Vault\\testingVault\\.obsidian\\plugins\\Obsidian-Canvas-Filter\\package-lock.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:package-lock.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\jardi\\Documents\\Obsidian Vault\\testingVault\\.obsidian\\plugins\\Obsidian-Canvas-Filter\\README.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:README.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\jardi\\Documents\\Obsidian Vault\\testingVault\\.obsidian\\plugins\\Obsidian-Canvas-Filter\\tsconfig.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:tsconfig.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\jardi\\Documents\\Obsidian Vault\\testingVault\\.obsidian\\plugins\\Obsidian-Canvas-Filter\\styles.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:styles.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\jardi\\Documents\\Obsidian Vault\\testingVault\\.obsidian\\plugins\\Obsidian-Canvas-Filter\\version-bump.mjs||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:version-bump.mjs||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\jardi\\Documents\\Obsidian Vault\\testingVault\\.obsidian\\plugins\\Obsidian-Canvas-Filter\\versions.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:versions.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\jardi\\Documents\\Obsidian Vault\\testingVault\\.obsidian\\plugins\\Obsidian-Canvas-Filter\\esbuild.config.mjs||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:esbuild.config.mjs||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\jardi\\Documents\\Obsidian Vault\\testingVault\\.obsidian\\plugins\\Obsidian-Canvas-Filter\\LICENSE||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:LICENSE||{8B382828-6202-11D1-8870-0000F87579D2}"
     }
   ],
   "DocumentGroupContainers": [
@@ -21,32 +50,123 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 9,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "lib.es5.d.ts",
-              "DocumentMoniker": "c:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\Common7\\IDE\\CommonExtensions\\Microsoft\\TSServer\\lib.es5.d.ts",
-              "RelativeDocumentMoniker": "..\\..\\..\\..\\..\\..\\..\\..\\Program Files\\Microsoft Visual Studio\\2022\\Community\\Common7\\IDE\\CommonExtensions\\Microsoft\\TSServer\\lib.es5.d.ts",
-              "ToolTip": "c:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\Common7\\IDE\\CommonExtensions\\Microsoft\\TSServer\\lib.es5.d.ts",
-              "RelativeToolTip": "..\\..\\..\\..\\..\\..\\..\\..\\Program Files\\Microsoft Visual Studio\\2022\\Community\\Common7\\IDE\\CommonExtensions\\Microsoft\\TSServer\\lib.es5.d.ts",
-              "ViewState": "AgIAAJUFAAAAAAAAAAAlwK4FAAAHAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
-              "WhenOpened": "2025-10-16T14:08:00.72Z",
+              "DocumentIndex": 1,
+              "Title": "manifest.json",
+              "DocumentMoniker": "C:\\Users\\jardi\\Documents\\Obsidian Vault\\testingVault\\.obsidian\\plugins\\Obsidian-Canvas-Filter\\manifest.json",
+              "RelativeDocumentMoniker": "manifest.json",
+              "ToolTip": "C:\\Users\\jardi\\Documents\\Obsidian Vault\\testingVault\\.obsidian\\plugins\\Obsidian-Canvas-Filter\\manifest.json",
+              "RelativeToolTip": "manifest.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-10-17T09:37:45.248Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "obsidian.d.ts",
-              "DocumentMoniker": "C:\\Users\\jardi\\Documents\\Obsidian Vault\\testingVault\\.obsidian\\plugins\\Obsidian-Canvas-Filter\\node_modules\\obsidian\\obsidian.d.ts",
-              "RelativeDocumentMoniker": "node_modules\\obsidian\\obsidian.d.ts",
-              "ToolTip": "C:\\Users\\jardi\\Documents\\Obsidian Vault\\testingVault\\.obsidian\\plugins\\Obsidian-Canvas-Filter\\node_modules\\obsidian\\obsidian.d.ts",
-              "RelativeToolTip": "node_modules\\obsidian\\obsidian.d.ts",
-              "ViewState": "AgIAAFQPAAAAAAAAAAAIwKAJAAAIAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
-              "WhenOpened": "2025-10-16T13:55:27.345Z",
+              "DocumentIndex": 2,
+              "Title": "package-lock.json",
+              "DocumentMoniker": "C:\\Users\\jardi\\Documents\\Obsidian Vault\\testingVault\\.obsidian\\plugins\\Obsidian-Canvas-Filter\\package-lock.json",
+              "RelativeDocumentMoniker": "package-lock.json",
+              "ToolTip": "C:\\Users\\jardi\\Documents\\Obsidian Vault\\testingVault\\.obsidian\\plugins\\Obsidian-Canvas-Filter\\package-lock.json",
+              "RelativeToolTip": "package-lock.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-10-17T09:37:00.653Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "README.md",
+              "DocumentMoniker": "C:\\Users\\jardi\\Documents\\Obsidian Vault\\testingVault\\.obsidian\\plugins\\Obsidian-Canvas-Filter\\README.md",
+              "RelativeDocumentMoniker": "README.md",
+              "ToolTip": "C:\\Users\\jardi\\Documents\\Obsidian Vault\\testingVault\\.obsidian\\plugins\\Obsidian-Canvas-Filter\\README.md",
+              "RelativeToolTip": "README.md",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001818|",
+              "WhenOpened": "2025-10-17T09:36:51.228Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "styles.css",
+              "DocumentMoniker": "C:\\Users\\jardi\\Documents\\Obsidian Vault\\testingVault\\.obsidian\\plugins\\Obsidian-Canvas-Filter\\styles.css",
+              "RelativeDocumentMoniker": "styles.css",
+              "ToolTip": "C:\\Users\\jardi\\Documents\\Obsidian Vault\\testingVault\\.obsidian\\plugins\\Obsidian-Canvas-Filter\\styles.css",
+              "RelativeToolTip": "styles.css",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2025-10-17T09:36:45.656Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "version-bump.mjs",
+              "DocumentMoniker": "C:\\Users\\jardi\\Documents\\Obsidian Vault\\testingVault\\.obsidian\\plugins\\Obsidian-Canvas-Filter\\version-bump.mjs",
+              "RelativeDocumentMoniker": "version-bump.mjs",
+              "ToolTip": "C:\\Users\\jardi\\Documents\\Obsidian Vault\\testingVault\\.obsidian\\plugins\\Obsidian-Canvas-Filter\\version-bump.mjs",
+              "RelativeToolTip": "version-bump.mjs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2025-10-17T09:36:28.62Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "esbuild.config.mjs",
+              "DocumentMoniker": "C:\\Users\\jardi\\Documents\\Obsidian Vault\\testingVault\\.obsidian\\plugins\\Obsidian-Canvas-Filter\\esbuild.config.mjs",
+              "RelativeDocumentMoniker": "esbuild.config.mjs",
+              "ToolTip": "C:\\Users\\jardi\\Documents\\Obsidian Vault\\testingVault\\.obsidian\\plugins\\Obsidian-Canvas-Filter\\esbuild.config.mjs",
+              "RelativeToolTip": "esbuild.config.mjs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2025-10-17T09:35:01.585Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "LICENSE",
+              "DocumentMoniker": "C:\\Users\\jardi\\Documents\\Obsidian Vault\\testingVault\\.obsidian\\plugins\\Obsidian-Canvas-Filter\\LICENSE",
+              "RelativeDocumentMoniker": "LICENSE",
+              "ToolTip": "C:\\Users\\jardi\\Documents\\Obsidian Vault\\testingVault\\.obsidian\\plugins\\Obsidian-Canvas-Filter\\LICENSE",
+              "RelativeToolTip": "LICENSE",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2025-10-17T09:34:51.287Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "versions.json",
+              "DocumentMoniker": "C:\\Users\\jardi\\Documents\\Obsidian Vault\\testingVault\\.obsidian\\plugins\\Obsidian-Canvas-Filter\\versions.json",
+              "RelativeDocumentMoniker": "versions.json",
+              "ToolTip": "C:\\Users\\jardi\\Documents\\Obsidian Vault\\testingVault\\.obsidian\\plugins\\Obsidian-Canvas-Filter\\versions.json",
+              "RelativeToolTip": "versions.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-10-17T09:34:46.764Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "tsconfig.json",
+              "DocumentMoniker": "C:\\Users\\jardi\\Documents\\Obsidian Vault\\testingVault\\.obsidian\\plugins\\Obsidian-Canvas-Filter\\tsconfig.json",
+              "RelativeDocumentMoniker": "tsconfig.json",
+              "ToolTip": "C:\\Users\\jardi\\Documents\\Obsidian Vault\\testingVault\\.obsidian\\plugins\\Obsidian-Canvas-Filter\\tsconfig.json",
+              "RelativeToolTip": "tsconfig.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-10-17T09:34:42.843Z",
               "EditorCaption": ""
             },
             {
@@ -57,9 +177,9 @@
               "RelativeDocumentMoniker": "main.ts",
               "ToolTip": "C:\\Users\\jardi\\Documents\\Obsidian Vault\\testingVault\\.obsidian\\plugins\\Obsidian-Canvas-Filter\\main.ts",
               "RelativeToolTip": "main.ts",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAHoBAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAG4AAAAAAAAAAAAAAG4AAAAbAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
-              "WhenOpened": "2025-10-16T13:48:03.84Z",
+              "WhenOpened": "2025-10-17T09:20:05.706Z",
               "EditorCaption": ""
             }
           ]
