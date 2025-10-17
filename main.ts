@@ -69,6 +69,11 @@ function getEdgesWhereBothNodesInSet(allEdges: CanvasEdgeData[], nodeIds: Set<st
 			&& nodeIds.has(edge.toNode));
 }
 
+
+var nodeIdsToShowMemory = new Set<string>();
+
+var nodeIdsToHideMemory = new Set<string>();
+
 export default class CanvasFilterPlugin extends Plugin {
 
 	private displayMode: "hide" | "fade" = "hide";
@@ -78,6 +83,15 @@ export default class CanvasFilterPlugin extends Plugin {
 		new Notice(`Display mode switched to: ${this.displayMode}`);
 	}
 
+	private resetMemory() {
+		//nodeIdsToShowMemory.clear;
+
+
+		nodeIdsToShowMemory = new Set<string>();
+
+		nodeIdsToHideMemory = new Set<string>();
+	}
+	
 	private ifActiveViewIsCanvas = (commandFn: (canvas: any, canvasData: CanvasData) => void) => (checking: boolean) => {
 		const canvasView = this.app.workspace.getActiveViewOfType(ItemView);
 
@@ -158,7 +172,13 @@ export default class CanvasFilterPlugin extends Plugin {
 		showOnlyNodes(canvas, nodesIdsToShow, this.displayMode);
 
 		showOnlyEdges(canvas, edgesIdsToShow, this.displayMode);
+
+		this.resetMemory();
+		
+		nodeIdsToShowMemory = nodesIdsToShow;
 	}
+
+
 
 	async onload() {
 
@@ -176,6 +196,8 @@ export default class CanvasFilterPlugin extends Plugin {
 				showOnlyNodes(canvas, undefined, this.displayMode);
 
 				showOnlyEdges(canvas, undefined, this.displayMode);
+
+				this.resetMemory();
 			})
 		});
 
@@ -211,6 +233,10 @@ export default class CanvasFilterPlugin extends Plugin {
 					getEdgesWhereBothNodesInSet(canvasData.edges, shownNodeIds).map(x => x.id))
 
 				showOnlyEdges(canvas, shownEdgeIds, this.displayMode);
+
+				this.resetMemory()
+
+				nodeIdsToShowMemory = shownNodeIds
 			})
 		});
 
@@ -250,6 +276,8 @@ export default class CanvasFilterPlugin extends Plugin {
 				}
 
 				canvas.deselectAll();
+
+				nodeIdsToShowMemory = selection;
 			})
 		});
 
@@ -306,6 +334,8 @@ export default class CanvasFilterPlugin extends Plugin {
 				}
 
 				canvas.deselectAll();
+
+				nodeIdsToShowMemory = selection;
 			})
 		});
 
@@ -314,6 +344,8 @@ export default class CanvasFilterPlugin extends Plugin {
 			name: 'show with ARROWS TO/FROM',
 			checkCallback: this.ifActiveViewIsCanvas((canvas, canvasData) => {
 				this.showConnectedNodes(canvas, canvasData, true, true);
+
+				this.resetMemory();
 			})
 		});
 
@@ -322,6 +354,9 @@ export default class CanvasFilterPlugin extends Plugin {
 			name: 'show with ARROWS FROM',
 			checkCallback: this.ifActiveViewIsCanvas((canvas, canvasData) => {
 				this.showConnectedNodes(canvas, canvasData, true, false);
+
+
+				this.resetMemory();
 			})
 		});
 
@@ -330,12 +365,19 @@ export default class CanvasFilterPlugin extends Plugin {
 			name: 'show with ARROWS TO',
 			checkCallback: this.ifActiveViewIsCanvas((canvas, canvasData) => {
 				this.showConnectedNodes(canvas, canvasData, false, true);
+
+				this.resetMemory();
 			})
+
+
 		});
 
 		this.addCommand({
-			id: 'show-tags',
+			id: 'showtags',
 			name: 'by TAG',
+
+
+
 			checkCallback: this.ifActiveViewIsCanvas((canvas, canvasData) => {
 
 				const tagsObject = (this.app.metadataCache as any).getTags() as Record<string, number>;
@@ -348,6 +390,16 @@ export default class CanvasFilterPlugin extends Plugin {
 						}
 						return [...x.text.matchAll(/#[^\s]+/g)].map(x => x[0]);
 					});
+
+
+
+				var groupsToShow = new Array<CanvasNodeData>();
+
+				var nodeIdsToShow = new Set<string>();
+
+				var edgesToShow = new Array<CanvasEdgeData>()
+
+
 
 				new TagSelectionModal(
 					this.app,
@@ -368,11 +420,86 @@ export default class CanvasFilterPlugin extends Plugin {
 							return false;
 						});
 
-						const groupsToShow = getGroupsFor(canvasData.nodes, nodesToShow);
+						groupsToShow = getGroupsFor(canvasData.nodes, nodesToShow);
 
-						const nodeIdsToShow = new Set(nodesToShow.map(x => x.id));
+						nodeIdsToShow = new Set(nodesToShow.map(x => x.id));
 
-						const edgesToShow = getEdgesWhereBothNodesInSet(canvasData.edges, nodeIdsToShow);
+						edgesToShow = getEdgesWhereBothNodesInSet(canvasData.edges, nodeIdsToShow);
+
+						for (const group of groupsToShow) {
+							nodeIdsToShow.add(group.id);
+						}
+
+						//new Notice('Hello, world!');
+
+						showOnlyNodes(canvas, nodeIdsToShow);
+
+						showOnlyEdges(canvas, new Set(edgesToShow.map(x => x.id)));
+
+
+						this.resetMemory();
+					}).open();
+
+
+			})
+		});
+
+
+		this.addCommand({
+			id: 'Hide-tags',
+			name: 'Hide TAG',
+			checkCallback: this.ifActiveViewIsCanvas((canvas, canvasData) => {
+
+
+
+
+
+				const tagsObject = (this.app.metadataCache as any).getTags() as Record<string, number>;
+				const tags = Object.keys(tagsObject);
+
+				const cardTags = canvasData.nodes
+					.flatMap(x => {
+						if (x.type !== "text") {
+							return [];
+						}
+						return [...x.text.matchAll(/#[^\s]+/g)].map(x => x[0]);
+					});
+
+
+
+				var groupsToShow = new Array<CanvasNodeData>();
+
+				var nodeIdsToShow = new Set<string>();
+
+				var edgesToShow = new Array<CanvasEdgeData>()
+
+
+
+				new TagSelectionModal(
+					this.app,
+					[...new Set([...tags, ...cardTags])],
+					(tag: string) => {
+
+						const nodesToShow = canvasData.nodes.filter(node => {
+
+							if (node.type === "file") {
+								const metadata = this.app.metadataCache.getCache(node.file);
+								return metadata?.tags?.some(x => x.tag != tag);
+								// TODO search subpaths?
+							}
+
+							if (node.type === "text") {
+								return node.text.indexOf(tag) == -1;
+							}
+
+							return false;
+						});
+
+						groupsToShow = getGroupsFor(canvasData.nodes, nodesToShow);
+
+						nodeIdsToShow = new Set(nodesToShow.map(x => x.id));
+
+						edgesToShow = getEdgesWhereBothNodesInSet(canvasData.edges, nodeIdsToShow);
 
 						for (const group of groupsToShow) {
 							nodeIdsToShow.add(group.id);
@@ -382,19 +509,204 @@ export default class CanvasFilterPlugin extends Plugin {
 
 						showOnlyEdges(canvas, new Set(edgesToShow.map(x => x.id)), this.displayMode);
 
+						this.resetMemory();
+
 					}).open();
+
+
 			})
 		});
+
+
+		this.addCommand({
+			id: 'show-tagsAditive',
+			name: 'by -TAG Aditive',
+			checkCallback: this.ifActiveViewIsCanvas((canvas, canvasData) => {
+
+				const tagsObject = (this.app.metadataCache as any).getTags() as Record<string, number>;
+				const tags = Object.keys(tagsObject);
+
+				const cardTags = canvasData.nodes
+					.flatMap(x => {
+						if (x.type !== "text") {
+							return [];
+						}
+						return [...x.text.matchAll(/#[^\s]+/g)].map(x => x[0]);
+					});
+
+
+
+				var groupsToShow = new Array<CanvasNodeData>();
+
+				var nodeIdsToShow = new Set<string>();
+
+				var edgesToShow = new Array<CanvasEdgeData>()
+
+
+
+				new TagSelectionModal(
+					this.app,
+					[...new Set([...tags, ...cardTags])],
+					(tag: string) => {
+
+						const nodesToShow = canvasData.nodes.filter(node => {
+
+							if (node.type === "file") {
+								const metadata = this.app.metadataCache.getCache(node.file);
+								return metadata?.tags?.some(x => x.tag != tag);
+								// TODO search subpaths?
+							}
+
+							if (node.type === "text") {
+								return node.text.indexOf(tag) == -1;
+							}
+
+							return false;
+						});
+
+						groupsToShow = getGroupsFor(canvasData.nodes, nodesToShow);
+
+						nodeIdsToShow = new Set(nodesToShow.map(x => x.id));
+
+
+
+						for (const nodeId of nodeIdsToShow) {
+
+							if (!nodeIdsToShowMemory.has(nodeId)) {
+								nodeIdsToShowMemory.add(nodeId);
+							}
+						}
+
+
+						  //+= nodeIdsToShow;
+
+
+
+
+
+
+						edgesToShow = getEdgesWhereBothNodesInSet(canvasData.edges, nodeIdsToShowMemory);
+
+						for (const group of groupsToShow) {
+							nodeIdsToShow.add(group.id);
+						}
+
+						//new Notice('Hello, world!');
+
+						showOnlyNodes(canvas, nodeIdsToShowMemory);
+
+						showOnlyEdges(canvas, new Set(edgesToShow.map(x => x.id)));
+
+					}).open();
+
+
+			})
+		});
+
+
+
+
+		this.addCommand({
+			id: 'showtagsAditive',
+			name: 'by TAG Aditive',
+			checkCallback: this.ifActiveViewIsCanvas((canvas, canvasData) => {
+
+				const tagsObject = (this.app.metadataCache as any).getTags() as Record<string, number>;
+				const tags = Object.keys(tagsObject);
+
+				const cardTags = canvasData.nodes
+					.flatMap(x => {
+						if (x.type !== "text") {
+							return [];
+						}
+						return [...x.text.matchAll(/#[^\s]+/g)].map(x => x[0]);
+					});
+
+
+
+				var groupsToShow = new Array<CanvasNodeData>();
+
+				var nodeIdsToShow = new Set<string>();
+
+				var edgesToShow = new Array<CanvasEdgeData>()
+
+
+
+				new TagSelectionModal(
+					this.app,
+					[...new Set([...tags, ...cardTags])],
+					(tag: string) => {
+
+						const nodesToShow = canvasData.nodes.filter(node => {
+
+							if (node.type === "file") {
+								const metadata = this.app.metadataCache.getCache(node.file);
+								return metadata?.tags?.some(x => x.tag === tag);
+								// TODO search subpaths?
+							}
+
+							if (node.type === "text") {
+								return node.text.indexOf(tag) !== -1;
+							}
+
+							return false;
+						});
+
+						groupsToShow = getGroupsFor(canvasData.nodes, nodesToShow);
+
+						nodeIdsToShow = new Set(nodesToShow.map(x => x.id));
+
+
+
+						for (const nodeId of nodeIdsToShow) {
+
+							if (!nodeIdsToShowMemory.has(nodeId)) {
+								nodeIdsToShowMemory.add(nodeId);
+							}
+						}
+
+
+						//+= nodeIdsToShow;
+
+
+
+
+
+
+						edgesToShow = getEdgesWhereBothNodesInSet(canvasData.edges, nodeIdsToShowMemory);
+
+						for (const group of groupsToShow) {
+							nodeIdsToShow.add(group.id);
+						}
+
+						//new Notice('Hello, world!');
+
+						showOnlyNodes(canvas, nodeIdsToShowMemory);
+
+						showOnlyEdges(canvas, new Set(edgesToShow.map(x => x.id)));
+
+					}).open();
+
+
+			})
+		});
+
+		
 	}
 }
 
 class TagSelectionModal extends FuzzySuggestModal<string> {
+
+
+
 
 	constructor(
 		app: App,
 		private tags: string[],
 		private onSelect: (tag: string) => void) {
 		super(app);
+
+		new Notice('Hello, world!');
 	}
 
 	getItems(): string[] {
