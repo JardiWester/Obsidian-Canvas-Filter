@@ -1,4 +1,8 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable @typescript-eslint/no-unused-vars */
+/* eslint-disable no-var */
 import { CanvasData, CanvasEdgeData, CanvasFileData, CanvasLinkData, CanvasNodeData, CanvasTextData } from 'obsidian/canvas';
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { App, FuzzySuggestModal, getAllTags, ItemView, Notice, Plugin } from 'obsidian';
 
 export interface CanvasGroupData extends CanvasNodeData {
@@ -93,13 +97,13 @@ export default class CanvasFilterPlugin extends Plugin {
 		const canvas = (canvasView as any).canvas;
 		if (!canvas) {
 			return;
-		};
+		}
 
 		const canvasData = canvas.getData() as CanvasData;
 
 		if (!canvasData) {
 			return;
-		};
+		}
 
 		return commandFn(canvas, canvasData);
 	}
@@ -527,7 +531,7 @@ export default class CanvasFilterPlugin extends Plugin {
 						}
 
 
-						  //+= nodeIdsToShow;
+						//+= nodeIdsToShow;
 
 
 
